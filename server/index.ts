@@ -39,14 +39,14 @@ app.use((req, res, next) => {
   let capturedJsonResponse:  Record<string, any> | undefined = undefined;
 
   const originalResJson = res.json;
-  res.json = function (bodyJson, ... args) {
+  res.json = function (bodyJson, ...args) {
     capturedJsonResponse = bodyJson;
     return originalResJson.apply(res, [bodyJson, ...args]);
   };
 
   res.on("finish", () => {
     const duration = Date.now() - start;
-    if (path.startsWith("/api")) {
+    if (path. startsWith("/api")) {
       let logLine = `${req.method} ${path} ${res.statusCode} in ${duration}ms`;
       if (capturedJsonResponse) {
         logLine += ` :: ${JSON.stringify(capturedJsonResponse)}`;
@@ -66,22 +66,29 @@ app.use((req, res, next) => {
 (async () => {
   const server = await registerRoutes(app);
 
-  // Error handler
-  // Error handler
-app.use((err:  any, _req: Request, res: Response, _next: NextFunction) => {
-  const status = err.status || err.statusCode || 500;
-  const message = err.message || "Internal Server Error";
+  // Error handler - MUST check if headers already sent
+  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
+    const status = err.status || err.statusCode || 500;
+    const message = err.message || "Internal Server Error";
 
-  console.error('Error handler:', err);
-  
-  // Only send response if headers haven't been sent
-  if (!res.headersSent) {
-    return res.status(status).json({ message });
+    console.error('Error handler caught:', err);
+    
+    // Only send response if headers haven't been sent yet
+    if (!res.headersSent) {
+      return res.status(status).json({ message });
+    }
+    
+    // If headers already sent, just log the error
+    console.error('Cannot send error response - headers already sent');
+  });
+
+  // Setup Vite in development OR serve static files in production
+  // IMPORTANT: This must come AFTER registerRoutes and error handler
+  if (app.get("env") === "development") {
+    await setupVite(app, server);
+  } else {
+    serveStatic(app);
   }
-  
-  // If headers already sent, just log
-  console.error('Headers already sent, cannot send error response');
-});
 
   // Listen on Render's PORT
   const port = parseInt(process.env.PORT || '10000', 10);
@@ -90,5 +97,6 @@ app.use((err:  any, _req: Request, res: Response, _next: NextFunction) => {
     log(`serving on port ${port}`);
     console.log(`🚀 Server ready at http://localhost:${port}`);
     console.log(`📂 Static files: ${app.get("env") === "production" ? "enabled" : "disabled (dev mode)"}`);
+    console.log(`🔧 Environment: ${app.get("env")}`);
   });
 })();
