@@ -15,7 +15,7 @@ declare module "express-session" {
 declare global {
   namespace Express {
     interface Request {
-      user?: User;
+      user?:  User;
     }
   }
 }
@@ -32,33 +32,33 @@ export function getSession() {
   });
 
   // Production configuration for Render
-  const isProduction = process.env.NODE_ENV === 'production';
+  const isProduction = process. env.NODE_ENV === 'production';
 
   return session({
     secret: process.env.SESSION_SECRET || "your-super-secret-key-change-in-production",
     store: sessionStore,
     resave: false,
-    saveUninitialized: false,
-    name: 'superflow. sid',
+    saveUninitialized:  false,
+    name: 'superflow.sid',
     cookie: {
       httpOnly: true,
-      secure:  isProduction,
+      secure: isProduction,
       maxAge: sessionTtl,
       sameSite: isProduction ?  'lax' : 'lax',
       path: '/',
     },
-    proxy: isProduction, // Trust proxy in production
+    proxy:  isProduction, // Trust proxy in production
   });
 }
 
 // Middleware to check if user is authenticated
 export const requireAuth = async (req: Request, res: Response, next: NextFunction) => {
-  if (!req.session. userId) {
+  if (!req.session.userId) {
     return res.status(401).json({ error: "Authentication required" });
   }
 
   try {
-    const user = await storage.getUser(req.session.userId);
+    const user = await storage.getUser(req. session.userId);
     if (!user) {
       req.session.userId = undefined;
       return res.status(401).json({ error: "User not found" });
@@ -74,7 +74,7 @@ export const requireAuth = async (req: Request, res: Response, next: NextFunctio
 
 // Middleware to attach user if logged in (optional auth)
 export const attachUser = async (req: Request, res: Response, next: NextFunction) => {
-  if (req.session. userId) {
+  if (req.session.userId) {
     try {
       const user = await storage.getUser(req.session.userId);
       if (user) {
@@ -98,7 +98,7 @@ export const comparePassword = async (password: string, hashedPassword: string):
 };
 
 // Create new user with email/password
-export const createUserWithPassword = async (email:  string, name: string, phone: string, password: string, termsAccepted: boolean): Promise<User> => {
+export const createUserWithPassword = async (email:  string, name: string, phone:  string, password: string, termsAccepted: boolean): Promise<User> => {
   // Check if user already exists
   const existingUser = await storage.getUserByEmail(email);
   if (existingUser) {
@@ -116,14 +116,14 @@ export const createUserWithPassword = async (email:  string, name: string, phone
     password: hashedPassword,
     provider: "local",
     providerId: null,
-    termsAccepted:  termsAccepted ?  new Date() : null,
+    termsAccepted: termsAccepted ? new Date() : null,
   });
 
   return user;
 };
 
 // Authenticate user with email/password
-export const authenticateUser = async (email:  string, password: string): Promise<User | null> => {
+export const authenticateUser = async (email: string, password: string): Promise<User | null> => {
   const user = await storage.getUserByEmail(email);
   if (!user || !user.password) {
     return null;
@@ -138,24 +138,24 @@ export const authenticateUser = async (email:  string, password: string): Promis
 };
 
 // Cross-domain user routing logic
-export const getUserRedirectUrl = (user: User, requestHost: string): string | null => {
+export const getUserRedirectUrl = (user: User, requestHost:  string): string | null => {
   const isMainApp = requestHost.includes('superflow.work') && !requestHost.includes('app.');
-  const isPremiumApp = requestHost.includes('app.superflow.work');
+  const isPremiumApp = requestHost.includes('app. superflow.work');
 
   // Check if user has premium access
-  const hasPremiumAccess = user.isPremium && user.planType !== 'free';
+  const hasPremiumAccess = user.isPremium && user. planType !== 'free';
 
   // Check if plan has expired
-  const isExpired = user.planExpiresAt && new Date() > user.planExpiresAt;
+  const isExpired = user. planExpiresAt && new Date() > user.planExpiresAt;
 
   if (isExpired) {
     // Expired users go to main app for renewal
-    return isMainApp ? null : 'https://superflow.work/premium';
+    return isMainApp ? null :  'https://superflow.work/premium';
   }
 
   if (hasPremiumAccess) {
     // Premium users should be on premium app
-    return isMainApp ?  'https://app.superflow.work/dashboard' : null;
+    return isMainApp ? 'https://app.superflow.work/dashboard' : null;
   } else {
     // Free users should be on main app
     return isPremiumApp ? 'https://superflow.work/dashboard' : null;
@@ -163,8 +163,8 @@ export const getUserRedirectUrl = (user: User, requestHost: string): string | nu
 };
 
 // Enhanced authentication middleware with cross-domain support
-export const requireAuthWithRouting = async (req: Request, res: Response, next: NextFunction) => {
-  if (!req. session.userId) {
+export const requireAuthWithRouting = async (req: Request, res:  Response, next: NextFunction) => {
+  if (!req.session.userId) {
     return res.status(401).json({ 
       error: "Authentication required",
       redirectTo: "https://superflow.work/"
@@ -234,20 +234,20 @@ export const checkPlanExpiry = async (userId: number): Promise<{ isExpired: bool
   try {
     const user = await storage.getUser(userId);
     if (!user || !user.planExpiresAt) {
-      return { isExpired: false, daysLeft:  -1, shouldDowngrade: false };
+      return { isExpired: false, daysLeft: -1, shouldDowngrade: false };
     }
 
     const now = new Date();
     const expiryDate = new Date(user.planExpiresAt);
     const timeDiff = expiryDate.getTime() - now.getTime();
-    const daysLeft = Math. ceil(timeDiff / (1000 * 3600 * 24));
+    const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
 
     const isExpired = timeDiff <= 0;
     const shouldDowngrade = isExpired && user.isPremium;
 
     // Auto-downgrade expired users
     if (shouldDowngrade) {
-      await storage.updateUser(userId, {
+      await storage. updateUser(userId, {
         planType: 'free',
         isPremium: false,
         minutesRemaining: 30 // Reset to free plan limits
@@ -259,6 +259,6 @@ export const checkPlanExpiry = async (userId: number): Promise<{ isExpired: bool
     return { isExpired, daysLeft, shouldDowngrade };
   } catch (error) {
     console.error("Plan expiry check error:", error);
-    return { isExpired:  false, daysLeft: -1, shouldDowngrade: false };
+    return { isExpired: false, daysLeft: -1, shouldDowngrade: false };
   }
 };
