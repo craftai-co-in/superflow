@@ -5,10 +5,10 @@ import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
 
-// Trust proxy for proper HTTPS detection and header handling
+// CRITICAL: Trust Render's proxy (MUST be first)
 app.set('trust proxy', 1);
 
-// India compliance: Security headers and encryption requirements
+// Security headers
 app.use((req, res, next) => {
   // Enforce HTTPS in production
   if (process.env.NODE_ENV === 'production' && req.header('x-forwarded-proto') !== 'https') {
@@ -26,20 +26,20 @@ app.use((req, res, next) => {
 });
 
 // CRITICAL: Mount webhook with raw parser BEFORE global JSON parsers
-// This ensures signature verification has access to the raw request body
 app.use('/api/payment/webhook', express.raw({ type: 'application/json', limit: '10mb' }));
 
-// Global body parsers - mounted AFTER webhook to avoid conflicts
-app.use(express.json({ limit: '25mb' }));
+// Global body parsers
+app.use(express. json({ limit: '25mb' }));
 app.use(express.urlencoded({ extended: true, limit: '25mb' }));
 
+// Request logging
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
-  let capturedJsonResponse: Record<string, any> | undefined = undefined;
+  let capturedJsonResponse:  Record<string, any> | undefined = undefined;
 
   const originalResJson = res.json;
-  res.json = function (bodyJson, ...args) {
+  res.json = function (bodyJson, ... args) {
     capturedJsonResponse = bodyJson;
     return originalResJson.apply(res, [bodyJson, ...args]);
   };
@@ -66,31 +66,28 @@ app.use((req, res, next) => {
 (async () => {
   const server = await registerRoutes(app);
 
+  // Error handler
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
     const status = err.status || err.statusCode || 500;
     const message = err.message || "Internal Server Error";
 
     res.status(status).json({ message });
-    throw err;
+    console.error(err);
   });
 
-  // importantly only setup vite in development and after
-  // setting up all the other routes so the catch-all route
-  // doesn't interfere with the other routes
+  // Setup Vite in development OR serve static files in production
   if (app.get("env") === "development") {
     await setupVite(app, server);
   } else {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on the port specified in the environment variable PORT
-  // Other ports are firewalled. Default to 5000 if not specified.
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = parseInt(process.env.PORT || '8080', 10);  // ← Change default to 8080
+  // Listen on Render's PORT
+  const port = parseInt(process.env.PORT || '10000', 10);
 
-// Cross-platform server listening
-server.listen(port, '0.0.0.0', () => {
-  log(`serving on port ${port}`);
-});
+  server.listen(port, '0.0.0.0', () => {
+    log(`serving on port ${port}`);
+    console.log(`🚀 Server ready at http://localhost:${port}`);
+    console.log(`📂 Static files: ${app.get("env") === "production" ? "enabled" : "disabled (dev mode)"}`);
+  });
 })();
