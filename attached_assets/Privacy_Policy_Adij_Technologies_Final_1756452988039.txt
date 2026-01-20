@@ -1,0 +1,302 @@
+
+# PRIVACY POLICY
+
+**Effective Date:** September 1, 2025  
+**Last Updated:** August 29, 2025
+
+## 1. INTRODUCTION
+
+Adij Technologies ("we," "us," "our," or "Company") operates the website superflow.work ("Service") that provides AI-powered voice-to-text transcription and content creation services. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal data in compliance with the Digital Personal Data Protection Act, 2023 ("DPDP Act"), Information Technology Act, 2000 ("IT Act"), and other applicable Indian laws.
+
+**Contact Information:**
+- **Business Name:** Adij Technologies  
+- **Address:** 7th Main Road, Mathikere, Mathikere Extension, Bengaluru (Urban), Karnataka - 560054  
+- **Data Protection Contact:** support@superflow.work  
+- **Legal Notice Address:** Same as business address above
+
+## 2. DATA WE COLLECT
+
+### 2.1 Personal Data
+We collect the following personal data with your explicit consent:
+
+**Account Information:**
+- Email address (mandatory for account creation)
+- Full name (optional)
+- Phone number (optional)
+- Profession (optional, for content targeting)
+- Password (stored in encrypted/hashed format)
+- Age verification data
+- Parental consent records (for users 13-17)
+
+**Usage Data:**
+- Voice recordings submitted for transcription
+- Transcribed text and generated content
+- Recording duration and file metadata
+- Account creation and last update timestamps
+- Session authentication data
+
+### 2.2 Technical Data
+- IP address and device information
+- Browser type and version
+- Access times and usage patterns
+- Error logs and performance metrics
+
+## 3. PURPOSE OF DATA PROCESSING
+
+We process your personal data for the following specific purposes under the DPDP Act:
+
+### 3.1 Service Delivery
+- Converting voice recordings to text using AI transcription
+- Enhancing content using AI language models
+- Formatting content for social media platforms
+- Providing personalized content recommendations
+
+### 3.2 Account Management
+- User authentication and account security
+- Customer support and communication
+- Service improvement and optimization
+- Age verification and parental consent management
+
+### 3.3 Legal Compliance
+- Compliance with Indian laws and regulations
+- Fraud prevention and security monitoring
+- Dispute resolution and legal proceedings
+- Minor protection and safety measures
+
+## 4. CONSENT MECHANISM
+
+### 4.1 Explicit Consent
+By creating an account, you provide explicit, informed consent for:
+- Collection and processing of personal data as described
+- Cross-border transfer of data to third-party AI services
+- Storage of voice recordings and transcribed content
+
+### 4.2 Parental Consent (Ages 13-17)
+For minor users:
+- Parent/guardian must provide explicit consent
+- Email verification of parental consent required
+- Parents can withdraw consent at any time
+- Additional data protection measures apply
+
+### 4.3 Granular Consent Options
+You can choose:
+- **Recording Storage:** Keep transcriptions saved or delete after processing
+- **Profile Enhancement:** Use profession data for content targeting
+- **Communication:** Receive service updates and support communications
+
+### 4.4 Consent Withdrawal
+You may withdraw consent at any time by:
+- Updating privacy settings in your account
+- Contacting us at support@superflow.work
+- Using the data deletion feature in your account
+- Parents can withdraw consent for minor accounts
+
+## 5. DATA SHARING AND DISCLOSURE
+
+### 5.1 Third-Party Service Providers
+We share data with the following service providers under strict data processing agreements:
+
+**OpenAI Services:**
+- **OpenAI Whisper API:** Audio transcription services
+- **OpenAI GPT-4o Mini:** Content enhancement and formatting
+- **Purpose:** Core service functionality
+- **Safeguards:** API key authentication, encrypted transmission, no long-term storage by OpenAI
+
+**Infrastructure Services:**
+- **Neon Database (PostgreSQL):** Hosted on Google Cloud Platform
+- **Google Cloud Platform:** Database and storage infrastructure
+- **Purpose:** Data storage and application hosting
+- **Safeguards:** Enterprise-grade security, Indian data residency options
+
+### 5.2 Cross-Border Data Transfer
+Voice recordings are temporarily processed by OpenAI services located outside India. We implement:
+- **Encryption in transit** using TLS 1.3 protocols
+- **Contractual data processing agreements**
+- **Limited processing duration** with deletion post-transcription
+- **User consent** for cross-border processing
+- **Note:** Transfer adequacy assessments ongoing as per DPDP Act implementation
+
+### 5.3 Legal Disclosures
+We may disclose data when required by:
+- Valid legal process or court orders
+- Government authorities under IT Act 2000
+- Prevention of fraud or security threats
+- Protection of our legal rights and property
+- Child safety and protection requirements
+
+## 6. DATA RETENTION
+
+### 6.1 Standard Retention Period
+- **Voice recordings:** Deleted after 1 (one) year from upload date
+- **Transcribed content:** Retained until user account deletion
+- **Account data:** Retained until account deletion plus 90 days for legal compliance
+- **Minor data:** Shorter retention periods and additional protections
+
+### 6.2 User-Controlled Retention
+- **Explicit Save:** Users can explicitly save recordings/content indefinitely
+- **Immediate Deletion:** Users can delete content anytime using account controls
+- **Account Deletion:** All data permanently deleted within 30 days of account closure
+- **Parental Control:** Parents can request immediate deletion of minor data
+
+## 7. DATA SECURITY
+
+### 7.1 Security Measures
+We implement industry-standard security measures:
+- **Encryption at Rest:** AES-256 encryption for stored data
+- **Encryption in Transit:** TLS 1.3 for all data transmissions
+- **Access Controls:** Role-based access with multi-factor authentication
+- **Regular Security Audits:** Quarterly security assessments
+- **Incident Response:** 24-hour breach notification protocols
+- **Enhanced Minor Protection:** Additional safeguards for users under 18
+
+### 7.2 Data Breach Response
+In case of data breaches affecting personal data:
+- **Immediate containment** within 1 hour of detection
+- **Regulatory notification** as per DPDP Act requirements (when rules notified)
+- **User notification** within 72 hours or as legally required, whichever is sooner
+- **Remedial action** including security enhancement measures
+
+## 8. YOUR RIGHTS UNDER DPDP ACT
+
+### 8.1 Right to Information
+You have the right to know:
+- What personal data we hold about you
+- How we use your personal data
+- With whom we share your data
+
+### 8.2 Right to Correction and Erasure
+You can:
+- **Update** incorrect personal data in your account settings
+- **Delete** specific recordings or content
+- **Request complete account deletion** with all associated data
+
+### 8.3 Right to Data Portability
+You can:
+- **Export** your transcribed content in standard formats
+- **Download** your account data and recordings
+- **Transfer** data to other service providers
+
+### 8.4 Right to Grievance Redressal
+Contact our Data Protection Officer at support@superflow.work for:
+- Data processing complaints
+- Privacy policy violations
+- Exercise of data subject rights
+
+### 8.5 Additional Rights for Minors
+Parents/guardians of minor users have additional rights to:
+- Access all data collected about their child
+- Request immediate data deletion
+- Withdraw consent for data processing
+- Monitor account activity
+
+## 9. AGE RESTRICTIONS
+
+### 9.1 Minimum Age Requirement
+Our service accepts users aged 13 years and above with the following requirements:
+
+**Ages 13-17:**
+- Explicit parental or guardian consent required
+- Parental email verification mandatory
+- Enhanced data protection measures
+- Parents responsible for account oversight
+
+**Ages 18+:**
+- Independent account creation
+- Full data processing rights
+- Standard protection measures
+
+### 9.2 Age Verification Process
+We implement:
+- Self-declaration during registration
+- Parental consent verification for minors
+- Random age verification requests
+- Immediate account deletion for users under 13
+
+### 9.3 Parental Responsibility
+If you are a parent or guardian:
+- You must provide valid consent for minor accounts
+- You are responsible for monitoring account usage
+- You can withdraw consent at any time
+- Contact us immediately for any concerns at support@superflow.work
+
+## 10. INTERNATIONAL DATA TRANSFERS
+
+### 10.1 Transfer Safeguards
+When transferring data outside India:
+- **Contractual protection** with international service providers
+- **Data processing agreements** ensuring Indian law compliance
+- **User consent** for cross-border processing
+- **Adequate safeguards** as per DPDP Act implementation
+
+## 11. COOKIES AND TRACKING
+
+### 11.1 Cookie Usage
+We use essential cookies only for:
+- **Authentication sessions** (strictly necessary)
+- **Service functionality** (technical cookies)
+- **Security protection** (fraud prevention)
+
+### 11.2 No Marketing Tracking
+We do not use:
+- Third-party advertising cookies
+- Social media tracking pixels
+- Marketing analytics beyond basic usage metrics
+
+## 12. POLICY UPDATES
+
+### 12.1 Notification Process
+We will notify you of privacy policy changes:
+- **30 days advance notice** for standard updates
+- **60 days advance notice** for major changes affecting data processing
+- **Email notification** to registered email address
+- **Website notice** prominently displayed
+- **Special notification** to parents for minor account changes
+
+### 12.2 Continued Use
+Continued use of our service after the notice period constitutes acceptance of updated privacy practices.
+
+## 13. GRIEVANCE REDRESSAL
+
+### 13.1 Internal Grievance
+For privacy-related complaints:
+- **Contact:** support@superflow.work
+- **Response Time:** Within 72 hours of receipt
+- **Resolution:** Within 30 days of complaint
+
+### 13.2 Regulatory Complaints
+You may file complaints with:
+- **Data Protection Board of India** (when operational)
+- **Cyber Crime Cell, Karnataka Police**
+- **Consumer Forums** under Consumer Protection Act 2019
+- **Ministry of Electronics and Information Technology** (MeitY)
+
+## 14. GOVERNING LAW
+
+This Privacy Policy is governed by:
+- **Digital Personal Data Protection Act, 2023**
+- **Information Technology Act, 2000 and Rules**
+- **Laws of Karnataka and India**
+- **Indian Contract Act, 1872**
+
+## 15. DPDP ACT IMPLEMENTATION
+
+This policy will be updated as DPDP Act 2023 rules are notified by the Government of India. Current compliance measures are based on:
+- Draft rules and industry best practices
+- Information Technology Act 2000 requirements
+- International data protection standards
+
+Updates will be communicated per Section 12 notification process.
+
+## 16. CONTACT US
+
+For any privacy-related questions or concerns:
+
+**Adij Technologies**  
+7th Main Road, Mathikere, Mathikere Extension  
+Bengaluru (Urban), Karnataka - 560054  
+Email: support@superflow.work
+
+---
+
+**Last Updated:** August 29, 2025  
+**Effective Date:** September 1, 2025

@@ -1,0 +1,60 @@
+For each main page (/, /features, /pricing, /blog/slug):
+
+View HTML source (not React devtools) and confirm:
+
+Unique <title> (< 60 chars, keyword-rich).
+
+Unique <meta name="description"> (~160 chars).
+
+<link rel="canonical" href="https://superflow.work/…"> present.
+
+Open Facebook Sharing Debugger and Twitter Card Validator: paste page URL → no “missing property” errors.
+
+Lighthouse SEO audit score ≥ 95.
+
+4. Open Graph & Twitter tags
+In page source verify:
+
+text
+<meta property="og:title" …>
+<meta property="og:description" …>
+<meta property="og:image" content="https://superflow.work/og-image.png">
+<meta property="og:url" …>
+<meta name="twitter:card" content="summary_large_image">
+Image URL must return HTTP 200 and be ≥1200×630 px.
+
+5. JSON-LD structured data
+In HTML <head> find a single <script type="application/ld+json">.
+
+Paste its contents into Google’s Rich Results Test – should return 0 errors / 0 warnings.
+
+Organization schema must include: "@type":"Organization", "url", "logo", "name".
+WebSite schema must include "@type":"WebSite", "potentialAction" (SearchAction).
+Blog/Article pages must include "headline", "datePublished", "author".
+
+6. Prerendering / Static HTML
+In Chrome DevTools → Network Conditions, set user-agent to Googlebot and reload /.
+
+Initial HTML must already contain the main content (not just a <div id="root"></div>).
+
+Response headers should include x-prerender or similar flag your script sets.
+
+Disable JavaScript (DevTools > Settings > Debugger) and reload. Page should still show meaningful content and links.
+
+Time-to-First-Byte (TTFB) ≤ 600 ms on first load.
+
+7. Performance & Accessibility spot-checks
+Run Chrome Lighthouse:
+
+Performance ≥ 85 (desktop)
+
+Accessibility ≥ 90
+
+Largest Contentful Paint ≤ 2.5 s
+If below, flag to optimise images, defer non-critical JS/CSS.
+
+8. Documentation file
+Open /SEO_README.md in repo:
+
+Contains step-by-step instructions to add new pages to sitemap, meta component usage, how to regenerate prerendered HTML.
+

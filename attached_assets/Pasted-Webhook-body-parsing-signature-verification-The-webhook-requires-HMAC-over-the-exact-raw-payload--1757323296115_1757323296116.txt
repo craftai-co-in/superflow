@@ -1,0 +1,36 @@
+Webhook body parsing/signature verification
+
+The webhook requires HMAC over the exact raw payload with x-webhook-timestamp; if express.json ran earlier, req.body is parsed and signature checks fail or are skipped silently, blocking status=paid updates. Fix by mounting express.raw({ type: 'application/json' }) before any global parsers for the webhook path.
+
+Return handler verification timing
+
+Immediately post-redirect, PGOrderFetchPayments may return empty/PENDING, so success detection fails and DB isn’t updated; add 2–3 retries with small delays and accept both 'SUCCESS' and 'PAID' signals to align with lifecycle behavior.
+
+Success predicate too narrow
+
+Code checks order_status === 'PAID' and payment_status === 'SUCCESS'; sandbox payloads and docs show variations; accept both 'PAID' (order state) and 'SUCCESS' (payment state) consistently in fallback paths.
+
+Parser conflicts and route order
+
+If the webhook route is registered after global parsers, or if multiple middlewares mutate req.body, signature checks and JSON parse may conflict; ensure the webhook path has its own raw parser and isn’t passed through JSON/urlencoded middleware.
+
+Trust proxy and POST-to-GET downgrade
+
+Without app.set('trust proxy', 1) early, HTTPS enforcement can 302 the POST to /payment/return and drop the body; you set trust proxy, but verify it’s before HTTPS/session middleware.
+
+Body format on return URL
+
+Hosted checkout can POST form-encoded parameters; ensure express.urlencoded is mounted before /payment/return or the body will be empty; your config has it globally, but confirm order and that content-type is handled.
+
+Storage lookup keys
+
+getPayment/updatePaymentStatus use cashfreeOrderId matching your merchant order_id; verify webhook payload uses the same “order_id” string; if the webhook sends a different key (e.g., cf_ prefixed), map it before lookup.
+
+Missing atomicity
+
+Payment status update and plan activation run separately; wrap in a transaction to prevent “paid without plan” or vice versa under concurrent handlers (return + webhook).
+
+Logging granularity
+
+Add explicit logs for: order_id resolved, paymentRecord presence, PG payments array length/statuses, signature verification outcomes, and DB update results; use the provided logging templates to capture 302 Location and body lengths.
+

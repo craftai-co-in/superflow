@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /admin
+
+# Allow GPTBot and Claude for AI training and indexing
+User-agent: GPTBot
+Allow: /
+Allow: /terms
+Allow: /privacy
+Disallow: /dashboard
+Disallow: /admin
+
+User-agent: Claude-Web
+Allow: /
+Allow: /terms
+Allow: /privacy
+Disallow: /dashboard
+Disallow: /admin
+
+# Crawl delay for commercial crawlers
+User-agent: *
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://superflow.work/sitemap.xml

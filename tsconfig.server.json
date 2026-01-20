@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "target": "ES2022",
+    "outDir": "./dist",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*":  ["./shared/*"]
+    },
+    "sourceMap": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports":  true,
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": false,
+    "alwaysStrict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": false,
+    "forceConsistentCasingInFileNames": false,
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "noEmit":  false,
+    "allowImportingTsExtensions": false,
+    "noImplicitOverride": false,
+    "types": ["node"]
+  },
+  "include":  [
+    "server/**/*",
+    "shared/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "client",
+    "dist"
+  ]
+}

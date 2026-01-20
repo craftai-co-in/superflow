@@ -1,0 +1,109 @@
+SUPERFLOW PAYMENT SYSTEM IMPLEMENTATION
+
+🚨 CRITICAL SYSTEM PROTECTION 🚨
+BEFORE ANY CHANGES: Verify these flows work perfectly:
+1. superflow.work → record → transcribe → results → signup CTA
+2. Dashboard → authenticated user experience → all existing features
+3. Authentication: signup → login → logout → session persistence
+
+IF ANY CORE FLOW BREAKS AT ANY POINT: STOP, REVERT, FIX BEFORE CONTINUING.
+
+📊 BUSINESS CONTEXT:
+Superflow transforms 30s voice recordings into social content. Adding 3-tier premium system:
+- LITE (₹199): 60 minutes total recording time, basic features
+- PRO (₹999): 600 minutes + audio file uploads + advanced AI features  
+- MAX (₹1999): Unlimited monthly usage + all premium features
+
+🎯 IMPLEMENTATION GOAL:
+Create payment system + premium subdomain (app.superflow.work) while preserving 100% free user experience.
+
+⚡ PHASE 1: PAYMENT FOUNDATION (Main App)
+DATABASE SCHEMA UPDATES:
+- EXTEND users table: ADD planType, minutesRemaining, planExpiresAt, isPremium
+- CREATE payments table: id, userId, cashfreeOrderId, planType, amount, status, paidAt
+- CREATE usage_tracking: id, userId, duration, remainingMinutes, timestamp
+
+CASHFREE INTEGRATION:
+- Install cashfree-pg package
+- Configure sandbox mode with environment variables
+- Return URL: "https://app.superflow.work/welcome"
+
+API ENDPOINTS (ADD to routes.ts):
+- POST /api/payments/create-order → Cashfree order creation
+- POST /api/payments/webhook → Payment confirmation handler
+- GET /api/user/plan-status → Current subscription details
+
+FRONTEND ADDITIONS:
+- ADD pricing modal with 3 tiers (follow auth-modal.tsx pattern)
+- ADD "Upgrade" buttons throughout free user journey
+- ADD usage display for premium users (minutes remaining)
+
+⚡ PHASE 2: PREMIUM SUBDOMAIN APP
+CREATE NEW REPLIT PROJECT for app.superflow.work:
+- Copy core functionality from main app
+- Same database connection string
+- Enhanced recording interface (no 30s limit for premium)
+- Audio file upload capability (Pro & Max only)
+- Premium user verification on every page load
+
+BUSINESS LOGIC:
+- deductMinutes(userId, duration) on each recording
+- Block recording when minutes exhausted (except Max unlimited)
+- Auto-redirect premium users from main domain to subdomain
+- Monthly reset for Max plan users
+
+⚡ PHASE 3: INTEGRATION & PRODUCTION
+CROSS-DOMAIN USER FLOW:
+- Main app login → check isPremium → if true, redirect to app.superflow.work
+- Premium app → verify subscription on load → if expired, redirect to upgrade
+- Shared session cookies (domain: .superflow.work)
+
+FEATURE GATING BY PLAN:
+- LITE: 60min recording, basic transcription, no uploads
+- PRO: 600min recording, file uploads, advanced AI features
+- MAX: Unlimited everything, priority processing
+
+PRODUCTION SETUP:
+- Switch Cashfree to production environment
+- Configure DNS: app.superflow.work CNAME
+- Test complete payment flow with real small amounts
+- Robust error handling for payment failures
+
+🔐 SECURITY REQUIREMENTS:
+- Store Cashfree credentials in environment variables
+- Verify webhook signatures for payment confirmations
+- Validate user permissions before premium feature access
+- DPDP Act compliance for payment data handling
+
+📱 USER EXPERIENCE:
+FREE USER: superflow.work → use 30s recordings → see upgrade prompts → payment → redirect to app.superflow.work
+PREMIUM USER: superflow.work login → auto-redirect to app.superflow.work → enhanced features
+
+💾 ENVIRONMENT VARIABLES NEEDED:
+CASHFREE_CLIENT_ID_SANDBOX=your_sandbox_id
+CASHFREE_CLIENT_SECRET_SANDBOX=your_sandbox_secret
+CASHFREE_CLIENT_ID_PRODUCTION=your_production_id  
+CASHFREE_CLIENT_SECRET_PRODUCTION=your_production_secret
+
+✅ SUCCESS CRITERIA:
+- All existing free user flows work identically
+- 3-tier payment system processes correctly in sandbox
+- Premium subdomain verifies subscriptions and shows enhanced features
+- Usage tracking deducts minutes accurately per plan
+- Cross-domain authentication seamless
+- Admin dashboard shows payment analytics
+- Production-ready with error handling
+
+⏱️ EXECUTION ORDER:
+1. Database schema + payment APIs (test via Postman)
+2. Payment UI integration on main app
+3. Create premium subdomain app with enhanced features
+4. Perfect cross-domain user flow and production setup
+
+🎯 FINAL DELIVERABLE:
+Complete freemium-to-premium platform where:
+- Free users: Unchanged experience with upgrade paths
+- Paid users: Seamless premium app with usage-based features
+- Business: Revenue-generating subscription system with analytics
+
+CONFIRMATION REQUIRED: Reply "✅ PAYMENT SYSTEM IMPLEMENTATION COMPLETE" only when all phases work perfectly and user journeys are seamless.

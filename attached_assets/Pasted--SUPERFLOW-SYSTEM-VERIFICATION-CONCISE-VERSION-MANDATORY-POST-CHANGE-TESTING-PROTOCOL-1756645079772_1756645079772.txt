@@ -1,0 +1,75 @@
+# **SUPERFLOW SYSTEM VERIFICATION - CONCISE VERSION**
+
+## **MANDATORY POST-CHANGE TESTING PROTOCOL**
+
+**REPLIT AI**: Complete ALL tests below. Report "✅ SYSTEM VERIFIED" only when everything passes.
+
+***
+
+### **🔥 CRITICAL FLOW TESTS**
+
+**1. COMPLETE USER JOURNEY** (Tests: Auth, Session, Routing, Database)
+```
+Landing Page → Click "Sign In" → Click "Sign Up" → Fill Form → Submit → 
+Auto-Login → Dashboard → Record 30s Audio → View Transcription → 
+Check History → Refresh Page (stay logged in) → Logout → Back to Landing
+```
+✅ **MUST COMPLETE WITHOUT ANY BREAKS**
+
+**2. CORE RECORDING PIPELINE** (Tests: Upload, AI APIs, Database, Processing)
+```
+Record Audio → Upload → Transcription appears → Enhancement completes → 
+Saves to history → Database updated → No console errors
+```
+✅ **MUST PROCESS SUCCESSFULLY**
+
+**3. AUTHENTICATION EDGE CASES**
+- Invalid login credentials → Proper error message
+- Signup with existing email → Proper error message  
+- Session persistence after page refresh
+- Protected routes redirect when not logged in
+
+***
+
+### **🔧 SYSTEM INTEGRITY CHECKS**
+
+**API Endpoints** (Quick test essential endpoints):
+- `POST /api/auth/signup` → Creates user ✅
+- `POST /api/auth/login` → Valid session ✅  
+- `POST /api/recordings` → Processes audio ✅
+- `GET /api/recordings` → Returns user data ✅
+
+**Error Handling**:  
+- Network failures show user-friendly messages
+- Large files/poor audio handled gracefully
+- No JavaScript console errors
+
+**Mobile Responsiveness**:
+- Recording works on mobile browsers
+- All auth flows functional on mobile
+
+***
+
+### **⚡ QUICK VERIFICATION COMMANDS**
+
+**Database Operations**: User creation → Session storage → Recording saves → Data retrieval
+**Security**: Password hashing → Session cookies → Protected routes → Data validation  
+**Performance**: Page loads <3s → Audio processing completes → No memory leaks
+
+***
+
+### **📋 FINAL CHECKPOINT**
+
+**Run this complete test sequence:**
+1. **New user signup → dashboard access** (2 min)
+2. **Record → transcribe → enhance → save** (1 min)  
+3. **Logout → login → data persists** (30 sec)
+4. **Mobile test: signup + recording** (1 min)
+
+**PASS CRITERIA**: Zero failures, no console errors, all data saves correctly.
+
+**ONLY RESPOND**: "✅ SYSTEM VERIFIED - ALL CRITICAL FLOWS OPERATIONAL" when complete.
+
+***
+
+**If anything fails → STOP, fix, retest before proceeding.**

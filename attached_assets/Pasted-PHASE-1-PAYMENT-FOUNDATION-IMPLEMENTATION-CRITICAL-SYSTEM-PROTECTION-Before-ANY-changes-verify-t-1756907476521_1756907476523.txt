@@ -1,0 +1,113 @@
+PHASE 1: PAYMENT FOUNDATION IMPLEMENTATION
+CRITICAL SYSTEM PROTECTION
+Before ANY changes, verify these core flows work perfectly:
+
+superflow.work → record → transcribe → results → signup CTA
+Dashboard → authenticated user experience → all existing features
+Authentication: signup → login → logout → session persistence
+IF ANY CORE FLOW BREAKS: STOP, REVERT, FIX BEFORE CONTINUING
+
+DATABASE SCHEMA UPDATES
+Extend users table in shared/schema.ts:
+// Add these fields to existing users table
+planType: varchar("plan_type").default("free"), // 'free', 'lite', 'pro', 'max'
+minutesRemaining: integer("minutes_remaining").default(30), // recording minutes left
+planExpiresAt: timestamp("plan_expires_at"), // subscription expiry
+isPremium: boolean("is_premium").default(false), // quick premium check
+Create payments table in shared/schema.ts:
+export const payments = pgTable("payments", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").references(() => users.id).notNull(),
+  cashfreeOrderId: varchar("cashfree_order_id").unique().notNull(),
+  planType: varchar("plan_type").notNull(), // 'lite', 'pro', 'max'
+  amount: integer("amount").notNull(), // amount in paisa (₹999 = 99900)
+  status: varchar("status").notNull().default("created"), // 'created', 'paid', 'failed'
+  paidAt: timestamp("paid_at"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+Create usage_tracking table in shared/schema.ts:
+export const usageTracking = pgTable("usage_tracking", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").references(() => users.id).notNull(),
+  duration: integer("duration").notNull(), // recording duration in seconds
+  remainingMinutes: integer("remaining_minutes").notNull(), // minutes left after this recording
+  createdAt: timestamp("created_at").defaultNow(),
+});
+PACKAGE INSTALLATION
+Install Cashfree payment gateway:
+
+npm install cashfree-pg
+ENVIRONMENT VARIABLES SETUP
+Add these to Replit Secrets (ask user for sandbox credentials):
+
+CASHFREE_APP_ID - Cashfree application ID
+CASHFREE_SECRET_KEY - Cashfree secret key
+CASHFREE_ENVIRONMENT - Set to "SANDBOX" for testing
+API ENDPOINTS IMPLEMENTATION
+Add these routes to server/routes.ts:
+
+Create Payment Order:
+// POST /api/payment/create-order
+// Body: { planType: 'lite' | 'pro' | 'max' }
+// Returns: { orderId, paymentSessionId }
+Payment Verification:
+// POST /api/payment/verify
+// Body: { orderId, transactionId }  
+// Returns: { success: boolean, redirectUrl: string }
+Get User Plan Status:
+// GET /api/user/plan-status
+// Returns: { planType, minutesRemaining, isPremium, expiresAt }
+PRICING STRUCTURE
+LITE: ₹199 (60 minutes total)
+PRO: ₹999 (600 minutes + features)
+MAX: ₹1999 (unlimited monthly)
+PAYMENT FLOW LOGIC
+User clicks upgrade on current app
+Creates Cashfree order with return URL: https://app.superflow.work/welcome
+Redirects to Cashfree payment page
+Payment success → updates user record → redirects to premium subdomain
+Payment failure → returns to main app with error message
+STORAGE LAYER UPDATES
+Extend server/storage.ts with these methods:
+
+createPaymentOrder()
+updatePaymentStatus()
+getUserPlanStatus()
+updateUserPlan()
+trackUsage()
+checkMinutesRemaining()
+USAGE TRACKING INTEGRATION
+Modify recording endpoints to:
+
+Check user's remaining minutes before recording
+Deduct recording duration from user's balance
+Prevent recording if insufficient minutes
+Track usage in usage_tracking table
+FRONTEND COMPONENTS NEEDED
+Pricing Modal - Display plans with upgrade buttons
+Payment Processing Screen - Show payment status
+Plan Status Display - Show current plan and remaining minutes
+Upgrade Prompts - When user hits limits
+TESTING CHECKLIST
+Before proceeding to Phase 2:
+
+✅ All existing flows work unchanged
+✅ Database migrations applied successfully
+✅ Cashfree sandbox integration working
+✅ Payment order creation working
+✅ Payment verification working
+✅ User plan status updates correctly
+✅ Usage tracking functional
+REPLIT-SPECIFIC CONSIDERATIONS
+Use port 5000 for development server
+Database hosted on Neon (already configured)
+Environment variables in Replit Secrets
+No Docker/containerization needed
+Deploy directly on Replit
+START IMPLEMENTATION: Begin with database schema updates, then package installation, then API endpoints. Test each component before moving to the next.
+
+ASK FOR CREDENTIALS: Request Cashfree sandbox APP_ID and SECRET_KEY when ready to implement payment integration.
+
+
+Scroll to latest
+Assistant mode

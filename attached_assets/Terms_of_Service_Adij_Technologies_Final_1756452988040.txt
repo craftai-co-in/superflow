@@ -1,0 +1,365 @@
+
+# TERMS OF SERVICE
+
+**Effective Date:** September 1, 2025  
+**Last Updated:** August 29, 2025
+
+## 1. ACCEPTANCE OF TERMS
+
+These Terms of Service ("Terms") constitute a legally binding agreement between you ("User," "you," or "your") and Adij Technologies ("we," "us," "our," or "Company") regarding your use of superflow.work ("Service," "Platform," or "Website").
+
+**By accessing or using our Service, you agree to:**
+- Be bound by these Terms and our Privacy Policy
+- Comply with all applicable Indian laws and regulations
+- Meet the minimum age requirements outlined below
+
+**Business Information:**
+- **Entity:** Adij Technologies (Proprietorship - conversion to Private Limited under consideration)
+- **Registered Address:** 7th Main Road, Mathikere, Mathikere Extension, Bengaluru (Urban), Karnataka - 560054
+- **Contact:** support@superflow.work
+- **Business Registration:** [GST/Shop & Establishment numbers when available]
+
+## 2. SERVICE DESCRIPTION
+
+### 2.1 Core Services
+Adij Technologies provides AI-powered content creation services including:
+
+**Voice-to-Text Transcription:**
+- Audio file processing using OpenAI Whisper technology
+- Multi-language transcription capabilities
+- Accurate speech recognition and text conversion
+
+**Content Enhancement:**
+- AI-powered content improvement using OpenAI GPT-4o Mini
+- Platform-specific formatting (YouTube, LinkedIn, social media)
+- Professional content structuring and optimization
+
+### 2.2 Service Specifications
+- **File Format Support:** Audio files only (MP3, WAV, M4A, etc.)
+- **Recording Duration Limit:** Maximum 10 minutes per file
+- **Free Trial:** Up to 30 seconds recording transcription
+- **Processing Time:** Typically 1-3 minutes depending on file length
+- **Content Languages:** Multiple languages supported via AI models
+
+### 2.3 Service Availability
+- **Target Uptime:** 95% monthly availability (best effort basis)
+- **Maintenance Windows:** Scheduled during low-usage periods
+- **Service Interruptions:** May occur due to technical maintenance or third-party dependencies
+
+## 3. USER ELIGIBILITY AND ACCOUNT REQUIREMENTS
+
+### 3.1 Age Requirement
+**Minimum Age: 13 years old**
+
+### 3.2 User Representation and Warranty
+By creating an account, you represent and warrant that:
+- You are at least 13 years old
+- If under 18, you have obtained verifiable parental consent
+- Providing false age information may result in account termination
+- Parents/guardians are responsible for minor account activity
+
+### 3.3 Age Verification
+During account registration:
+- Self-declaration of age required
+- Parental consent verification for users 13-17
+- Random age verification requests may be initiated
+- Account suspension pending verification if required
+- Immediate account deletion for users under 13
+
+### 3.4 Account Registration
+To use our Service, you must:
+- Provide a valid email address
+- Meet minimum age requirements
+- Obtain parental consent (if under 18)
+- Create a secure password
+- Agree to these Terms and our Privacy Policy
+- Maintain accurate account information
+
+### 3.5 Account Security
+You are responsible for:
+- Maintaining confidentiality of login credentials
+- All activities occurring under your account
+- Immediately notifying us of unauthorized account access
+- Using strong passwords and security practices
+- Parents/guardians responsible for minor account security
+
+## 4. ACCEPTABLE USE POLICY
+
+### 4.1 Permitted Uses
+You may use our Service to:
+- Transcribe your own voice recordings
+- Create content for legitimate business, educational, or personal purposes
+- Generate social media content from your transcriptions
+- Enhance and format your original content
+
+### 4.2 Prohibited Uses
+**You SHALL NOT use our Service for:**
+
+**Content Violations (IT Act 2000 Compliance):**
+- Creating defamatory, obscene, or hateful content
+- Generating misleading information or deepfakes
+- Producing content that violates intellectual property rights
+- Creating content promoting violence, terrorism, or illegal activities
+- Harassment, cyberbullying, or threatening communications
+
+**Platform Abuse:**
+- Uploading spam or repetitive content
+- Attempting to reverse-engineer our AI systems
+- Creating content for illegal businesses or activities
+- Violating third-party platform policies (YouTube, LinkedIn terms)
+- Using the service to circumvent other platforms' content policies
+
+**Technical Violations:**
+- Attempting unauthorized access to our systems
+- Using automated scripts or bots without permission
+- Overloading our servers or infrastructure
+- Circumventing usage limitations or security measures
+
+### 4.3 Content Responsibility
+You represent and warrant that:
+- You own or have rights to all uploaded content
+- Your content does not violate any third-party rights
+- You comply with all applicable laws and platform policies
+- You will not upload copyrighted material without authorization
+
+## 5. PRICING AND PAYMENT TERMS
+
+### 5.1 Current Pricing Model
+- **Free Trial:** 30-second recording transcription
+- **Paid Features:** Currently under development
+- **Payment Structure:** One-time payments, no recurring subscriptions
+- **Pricing Updates:** Will be communicated 30 days in advance
+
+### 5.2 Future Payment Terms
+When paid features launch:
+- All payments processed in Indian Rupees (INR)
+- No refunds for successfully processed transcriptions
+- Payment disputes handled per Consumer Protection Act 2019
+- Clear pricing displayed before service purchase
+- Parental consent required for minor payments
+
+## 6. INTELLECTUAL PROPERTY RIGHTS
+
+### 6.1 Service Ownership
+Adij Technologies owns all rights to:
+- The superflow.work platform and technology
+- AI model implementations and configurations
+- Service interfaces, designs, and functionality
+- Trademarks, logos, and brand elements
+
+### 6.2 User Content Rights
+You retain ownership of:
+- Original voice recordings uploaded to our Service
+- Transcribed text generated from your recordings
+- Enhanced content created from your original material
+
+### 6.3 License Grant
+By using our Service, you grant us:
+- **Limited license** to process your content for transcription
+- **Technical rights** to store and enhance your recordings
+- **No ownership claims** over your original content or transcriptions
+
+### 6.4 Third-Party AI Services
+Content processing involves:
+- OpenAI Whisper for speech recognition
+- OpenAI GPT models for content enhancement
+- Temporary processing under their respective terms
+- No long-term retention by third-party AI providers
+
+### 6.5 THIRD-PARTY DATA PROCESSING
+- **OpenAI services:** Processing under their API terms and our instructions
+- **Google Cloud Platform:** Infrastructure services with enterprise agreements
+- **Data processing agreements:** Reviewed annually
+- **Sub-processor notifications:** Provided when material changes occur
+
+## 7. DATA PROCESSING AND PRIVACY
+
+### 7.1 Data Collection
+We collect and process data as detailed in our Privacy Policy, including:
+- Account information and contact details
+- Voice recordings and transcribed content
+- Usage data and service interactions
+- Technical data for service improvement
+- Parental consent records for minors
+
+### 7.2 DPDP Act 2023 Compliance
+Our data processing aims to comply with:
+- **Explicit consent** requirements for personal data (when DPDP Act rules are notified)
+- **Purpose limitation** for collected information
+- **Data minimization** principles
+- **User rights** including access, correction, and deletion (as per applicable provisions)
+- **Special protections** for minor users
+
+### 7.3 Data Retention
+- **Voice recordings:** Deleted after 1 year unless explicitly saved
+- **User accounts:** Data retained until account deletion
+- **Legal compliance:** Some data retained per regulatory requirements
+- **Minor data:** Additional protections and shorter retention periods
+
+## 8. SERVICE LIMITATIONS AND DISCLAIMERS
+
+### 8.1 Service Availability
+We provide Service on an "AS IS" and "AS AVAILABLE" basis:
+- **No guarantee** of uninterrupted service availability
+- **95% uptime target** but not legally guaranteed
+- **Third-party dependencies** may affect service quality
+- **Scheduled maintenance** may temporarily interrupt service
+
+### 8.2 Accuracy Disclaimers
+While we strive for high accuracy:
+- **AI transcription** may contain errors or inaccuracies
+- **Content enhancement** suggestions are automated recommendations
+- **User verification** required for critical or professional content
+- **No warranty** of perfect transcription accuracy
+
+### 8.3 Technical Limitations
+Service limitations include:
+- **File size** and **duration** restrictions
+- **Supported formats** limited to audio files
+- **Processing time** dependent on file complexity
+- **Internet connectivity** required for all features
+
+## 9. LIABILITY AND INDEMNIFICATION
+
+### 9.1 Limitation of Liability
+To the extent permitted by Indian law:
+- Our liability is limited to service fees paid (if any) or ₹10,000, whichever is lower
+- No liability for indirect, consequential, or punitive damages except as required by Consumer Protection Act 2019
+- No responsibility for third-party AI service limitations
+- User assumes risk for reliance on AI-generated content
+- Nothing herein limits consumer rights under applicable law
+
+### 9.2 User Indemnification
+You agree to indemnify Adij Technologies against:
+- Claims arising from your content or usage violations
+- Intellectual property infringement by your materials
+- Violation of these Terms or applicable laws
+- Damages caused by your account misuse
+
+### 9.3 Consumer Protection Act Compliance
+Nothing in these Terms limits your rights under the Consumer Protection Act 2019, including:
+- Right to seek compensation for deficient services
+- Right to file complaints with consumer forums
+- Protection against unfair trade practices
+
+## 10. TERMINATION
+
+### 10.1 Termination by User
+You may terminate your account:
+- At any time without prior notice
+- By using account deletion features
+- All data will be deleted per our Privacy Policy
+- No refunds for unused paid services (when applicable)
+
+### 10.2 Termination by Company
+We may suspend or terminate accounts for:
+- Violation of these Terms or Acceptable Use Policy
+- Suspected fraudulent or illegal activities
+- Extended periods of account inactivity
+- Technical or security reasons
+- Age verification failures
+
+### 10.3 Effect of Termination
+Upon termination:
+- Access to Service immediately ceases
+- Data deletion per Privacy Policy timelines
+- Outstanding obligations survive termination
+- No liability for termination consequences
+
+## 11. DISPUTE RESOLUTION
+
+### 11.1 Governing Law
+These Terms are governed by:
+- **Laws of Karnataka State**
+- **Federal laws of India**
+- **Information Technology Act, 2000**
+- **Consumer Protection Act, 2019**
+
+### 11.2 Dispute Resolution Mechanism
+
+**Step 1: Internal Resolution**
+- Contact support@superflow.work for dispute resolution
+- 30-day good faith negotiation period
+- Written documentation of dispute and resolution attempts
+
+**Step 2: Online Dispute Resolution (ODR)**
+- For disputes under ₹20 lakhs: ODR as per Consumer Protection Act (subject to platform availability)
+- Alternative resolution if ODR platform unavailable
+- 30-90 day resolution timeframe where applicable
+
+**Step 3: Arbitration**
+- Disputes exceeding ODR limits subject to arbitration
+- **Single arbitrator** appointed per Arbitration Act 2015
+- **Venue:** Bengaluru, Karnataka
+- **Language:** English
+- **Arbitration costs:** As per institutional rules
+
+**Step 4: Court Jurisdiction**
+- If arbitration fails or is not applicable
+- **Exclusive jurisdiction:** Courts in Bengaluru, Karnataka
+- **Subject to:** Karnataka state and Indian federal laws
+
+### 11.3 Class Action Waiver
+You agree to resolve disputes individually and waive rights to:
+- Participate in class action lawsuits
+- Join consolidated proceedings with other users
+- Seek relief on behalf of other users
+
+## 12. MODIFICATIONS TO TERMS
+
+### 12.1 Update Process
+We may modify these Terms with:
+- **30 days advance notice** for standard updates
+- **60 days advance notice** for material changes
+- **Email notification** to registered users
+- **Prominent website notices** during notice period
+
+### 12.2 Acceptance of Changes
+Continued use after notice period constitutes acceptance of updated Terms. If you disagree with changes:
+- You may terminate your account before changes take effect
+- Outstanding obligations remain in effect
+- Data deletion per Privacy Policy applies
+
+## 13. GENERAL PROVISIONS
+
+### 13.1 Entire Agreement
+These Terms, together with our Privacy Policy, constitute the entire agreement between you and Adij Technologies regarding Service use.
+
+### 13.2 Severability
+If any provision is found unenforceable:
+- Remaining provisions continue in full effect
+- Invalid provisions replaced with enforceable equivalent
+- Overall agreement validity maintained
+
+### 13.3 Assignment
+- You cannot assign rights under these Terms
+- We may assign our rights and obligations
+- Service transfer includes Term assignment rights
+
+### 13.4 Force Majeure
+We are not liable for service interruptions due to:
+- Natural disasters, government actions, or pandemic restrictions
+- OpenAI API service outages or limitations
+- Google Cloud Platform infrastructure failures
+- Internet backbone failures affecting service delivery
+- Circumstances beyond our reasonable control lasting more than 48 hours
+
+## 14. CONTACT INFORMATION
+
+For questions about these Terms:
+
+**Adij Technologies**  
+7th Main Road, Mathikere, Mathikere Extension  
+Bengaluru (Urban), Karnataka - 560054  
+**Email:** support@superflow.work  
+
+**Legal Notices:** Same address as above  
+**Business Hours:** Monday to Friday, 9:00 AM to 6:00 PM IST  
+**Response Time:** Within 72 hours for standard inquiries
+
+---
+
+**Last Updated:** August 29, 2025  
+**Effective Date:** September 1, 2025
+
+*By using our Service, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service and our Privacy Policy.*

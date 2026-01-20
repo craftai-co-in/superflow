@@ -1,0 +1,19 @@
+Final checks so nothing else breaks
+Webhook mounting order: Mount app.post("/api/payment/webhook", express.raw({ type: 'application/json' }), handler) before any global app.use(express.json/urlencoded) so signature verification uses the raw body reliably.
+
+Return parser order: Ensure express.urlencoded({ extended:true }) is registered before /payment/return and confirm that one live POST shows non-empty req.body fields (order_id/order_status) in logs.
+
+Verification retry and predicates: Add 2–3 retries (1–2s apart) around PGOrderFetchPayments and accept both 'PAID' (order) and 'SUCCESS' (payment) before declaring success; log each attempt’s statuses.
+
+Transactional update: Wrap updatePaymentStatus + updateUserPlan in a single DB transaction, and make the operation idempotent (skip if already “paid”) so return and webhook cannot double-apply.
+
+Single source of truth: Treat webhook as authoritative for persistence; the return route may redirect immediately but should still attempt verification and then simply display status based on stored result if webhook already set it.
+
+Absolute success redirect (if using subdomain): If the final UX lives on app.superflow.work, use an absolute Location header to that domain to avoid staying on a sandbox host; keep relative paths otherwise.
+
+Dashboard validation: In Sandbox dashboard, verify Webhook Logs show 200 responses for your URL, Orders view shows PAID for the same order_id, and Dev Studio “Get Payments for an Order” returns at least one SUCCESS record after your retries.
+
+HAR + server logs: Capture a HAR for the redirect and ensure /payment/return responds 302 to /payment/success; on the server, confirm logs show Content-Type and Content-Length on the POST and the final Location header used.
+
+Guardrails for Replit: Before merging, run a scripted end-to-end test that asserts DB status transitions (created→paid), plan activation, and that legacy free flows (record→transcribe→results) still pass; reject changes automatically if any core flow fails.
+
