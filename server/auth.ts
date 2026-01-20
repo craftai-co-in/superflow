@@ -26,7 +26,7 @@ export function getSession() {
   const pgStore = connectPg(session);
   const sessionStore = new pgStore({
     conString: process.env.DATABASE_URL,
-    createTableIfMissing: true,
+    createTableIfMissing:  true,
     ttl: sessionTtl,
     tableName: "sessions",
   });
@@ -35,7 +35,7 @@ export function getSession() {
   const isProduction = process.env.NODE_ENV === 'production';
 
   return session({
-    secret:  process.env.SESSION_SECRET || "your-super-secret-key-change-in-production",
+    secret: process.env.SESSION_SECRET || "your-super-secret-key-change-in-production",
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
@@ -44,7 +44,7 @@ export function getSession() {
       httpOnly: true,
       secure:  isProduction,
       maxAge: sessionTtl,
-      sameSite: isProduction ? 'lax' : 'lax',
+      sameSite: isProduction ?  'lax' : 'lax',
       path: '/',
     },
     proxy: isProduction, // Trust proxy in production
@@ -58,7 +58,7 @@ export const requireAuth = async (req: Request, res: Response, next: NextFunctio
   }
 
   try {
-    const user = await storage.getUser(req.session. userId);
+    const user = await storage.getUser(req.session.userId);
     if (!user) {
       req.session.userId = undefined;
       return res.status(401).json({ error: "User not found" });
@@ -98,7 +98,7 @@ export const comparePassword = async (password: string, hashedPassword: string):
 };
 
 // Create new user with email/password
-export const createUserWithPassword = async (email: string, name: string, phone: string, password: string, termsAccepted: boolean): Promise<User> => {
+export const createUserWithPassword = async (email:  string, name: string, phone: string, password: string, termsAccepted: boolean): Promise<User> => {
   // Check if user already exists
   const existingUser = await storage.getUserByEmail(email);
   if (existingUser) {
@@ -109,7 +109,7 @@ export const createUserWithPassword = async (email: string, name: string, phone:
   const hashedPassword = await hashPassword(password);
 
   // Create user
-  const user = await storage.createUser({
+  const user = await storage. createUser({
     email,
     name,
     phone,
@@ -123,7 +123,7 @@ export const createUserWithPassword = async (email: string, name: string, phone:
 };
 
 // Authenticate user with email/password
-export const authenticateUser = async (email: string, password: string): Promise<User | null> => {
+export const authenticateUser = async (email:  string, password: string): Promise<User | null> => {
   const user = await storage.getUserByEmail(email);
   if (!user || !user.password) {
     return null;
@@ -139,11 +139,11 @@ export const authenticateUser = async (email: string, password: string): Promise
 
 // Cross-domain user routing logic
 export const getUserRedirectUrl = (user: User, requestHost: string): string | null => {
-  const isMainApp = requestHost. includes('superflow.work') && ! requestHost.includes('app.');
-  const isPremiumApp = requestHost.includes('app. superflow.work');
+  const isMainApp = requestHost.includes('superflow.work') && !requestHost.includes('app.');
+  const isPremiumApp = requestHost.includes('app.superflow.work');
 
   // Check if user has premium access
-  const hasPremiumAccess = user. isPremium && user.planType !== 'free';
+  const hasPremiumAccess = user.isPremium && user.planType !== 'free';
 
   // Check if plan has expired
   const isExpired = user.planExpiresAt && new Date() > user.planExpiresAt;
@@ -155,10 +155,10 @@ export const getUserRedirectUrl = (user: User, requestHost: string): string | nu
 
   if (hasPremiumAccess) {
     // Premium users should be on premium app
-    return isMainApp ? 'https://app.superflow.work/dashboard' : null;
+    return isMainApp ?  'https://app.superflow.work/dashboard' : null;
   } else {
     // Free users should be on main app
-    return isPremiumApp ? 'https://superflow.work/dashboard' :  null;
+    return isPremiumApp ? 'https://superflow.work/dashboard' : null;
   }
 };
 
@@ -172,7 +172,7 @@ export const requireAuthWithRouting = async (req: Request, res: Response, next: 
   }
 
   try {
-    const user = await storage.getUser(req.session. userId);
+    const user = await storage. getUser(req.session.userId);
     if (!user) {
       req.session.userId = undefined;
       return res.status(401).json({ 
@@ -206,7 +206,7 @@ export const handleCrossDomainError = (error: any, req: Request, res: Response) 
   const host = req.get('host') || '';
   const isMainApp = host.includes('superflow.work') && !host.includes('app.');
 
-  if (error.message?. includes('ETIMEDOUT') || error.message?.includes('ECONNREFUSED')) {
+  if (error.message?.includes('ETIMEDOUT') || error.message?.includes('ECONNREFUSED')) {
     return res.status(503).json({
       error: "Service temporarily unavailable",
       message: "Please try again in a few moments",
@@ -230,7 +230,7 @@ export const handleCrossDomainError = (error: any, req: Request, res: Response) 
 };
 
 // Plan expiry check with graceful degradation
-export const checkPlanExpiry = async (userId: number): Promise<{ isExpired: boolean; daysLeft: number; shouldDowngrade: boolean }> => {
+export const checkPlanExpiry = async (userId: number): Promise<{ isExpired: boolean; daysLeft:  number; shouldDowngrade: boolean }> => {
   try {
     const user = await storage.getUser(userId);
     if (!user || !user.planExpiresAt) {
@@ -238,7 +238,7 @@ export const checkPlanExpiry = async (userId: number): Promise<{ isExpired: bool
     }
 
     const now = new Date();
-    const expiryDate = new Date(user. planExpiresAt);
+    const expiryDate = new Date(user.planExpiresAt);
     const timeDiff = expiryDate.getTime() - now.getTime();
     const daysLeft = Math. ceil(timeDiff / (1000 * 3600 * 24));
 
@@ -259,6 +259,6 @@ export const checkPlanExpiry = async (userId: number): Promise<{ isExpired: bool
     return { isExpired, daysLeft, shouldDowngrade };
   } catch (error) {
     console.error("Plan expiry check error:", error);
-    return { isExpired: false, daysLeft:  -1, shouldDowngrade: false };
+    return { isExpired:  false, daysLeft: -1, shouldDowngrade: false };
   }
 };
