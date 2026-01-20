@@ -67,20 +67,21 @@ app.use((req, res, next) => {
   const server = await registerRoutes(app);
 
   // Error handler
-  app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
-    const status = err.status || err.statusCode || 500;
-    const message = err.message || "Internal Server Error";
+  // Error handler
+app.use((err:  any, _req: Request, res: Response, _next: NextFunction) => {
+  const status = err.status || err.statusCode || 500;
+  const message = err.message || "Internal Server Error";
 
-    res.status(status).json({ message });
-    console.error(err);
-  });
-
-  // Setup Vite in development OR serve static files in production
-  if (app.get("env") === "development") {
-    await setupVite(app, server);
-  } else {
-    serveStatic(app);
+  console.error('Error handler:', err);
+  
+  // Only send response if headers haven't been sent
+  if (!res.headersSent) {
+    return res.status(status).json({ message });
   }
+  
+  // If headers already sent, just log
+  console.error('Headers already sent, cannot send error response');
+});
 
   // Listen on Render's PORT
   const port = parseInt(process.env.PORT || '10000', 10);
